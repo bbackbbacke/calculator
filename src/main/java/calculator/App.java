@@ -2,9 +2,12 @@ package calculator;
 import java.util.*;
 public class App {
     public static void main(String[] args) {
+        /* 연산의 결과를 저장할 수 있도록 적합한 타입의 배열을 생성합니다. */
+        int list[] = new int[10];
+        /* 연산의 결과가 저장된 배열의 마지막 index를 저장하는 변수를 선언  = count를 할 수 있는 변수를 선언해라*/
+        int count =0;
         Scanner sc = new Scanner(System.in);
 
-        //<1-4>
         /* 반복문 사용 해서 연산을 반복 */
         /* exit을 입력 받으면 반복 종료 */
         String exitMessage = "";
@@ -44,6 +47,15 @@ public class App {
                     isError = true; // 잘못된 연산자 입력으로 오류 발생을 표시
                 }
             }
+            list[count]=result;
+            if(count<list.length-1){
+            count++;
+            }
+            else{
+                break;
+            }
+
+
             System.out.println("결과: " + result); // 오류가 발생하지 않았을 때 결과 출력
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             exitMessage = sc.nextLine();
