@@ -1,11 +1,11 @@
 package calculator;
 import java.util.*;
-
+//<1-7> 맨 밑에 건의?.. 질문?.. 주석 있습니다!!!!!!!
 public class App {
     public static void main(String[] args) {
-        int list[] = new int[10];
-        int count = 0;
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // 변수 선언
+        ArrayList<Integer> resultList = new ArrayList<>(); // 연산결과저장할 array 선언
+
         String exitMessage = "";
 
         while (!Objects.equals(exitMessage, "exit")) {
@@ -38,29 +38,30 @@ public class App {
                     isError = true;
                 }
             }
-                //기본 boolean isError = false니까 !isError라는 것은 while문이 true이므로 실행될 때를 말함.
-                //count == list.length == 배열이 꽉 차다.(10개의 인덱스(0~9)가 다 차 있다.)
-                //int i = 1(배열의 두번째 요소(1번째인덱스)부터  각 요소를 자신의 직전 위치로 복사(list[i-1] = list [i])
-                //count를 -- 로 조정하여 배열이 꽉차면 마지막위치를 한 칸 앞당겨(원래 0번째 인덱스 애는 사라지는 것) 새로운 요소를 마지막 위치(9번째 인덱스)에 추가할 수 있게 함.
+            //43line에서 result부분에 오류가 떴던 이유는 result가 int값이었는데 나는 homework2보고 하느냐고 ArrayList를 String으로 선언해줬음(7 line)
             if (!isError) {
-                if (count == list.length) {
-                    for (int i = 1; i < list.length; i++) {
-                        list[i - 1] = list[i];
-                    }
-                    count--; // 마지막 요소가 채워질 위치를 다시 여는 작업
-                }
-
-                list[count] = result;
-                if(count < list.length - 1) {
-                    count++;
-                }
+               resultList.add(result); // ArrayList에 연산결과 추가
 
                 System.out.println("결과: " + result);
+                System.out.println("가장 먼저 연산된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)"); //remove입력 시 삭제
+                if (Objects.equals(sc.next(), "remove")){
+                    if(resultList.size()>0){
+                        resultList.remove(0); // 첫번째 결과 삭제
             }
-
+        } // while문 끝
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             exitMessage = sc.nextLine();
-        }
-        sc.close();
+
+
+
+
     }
-}
+        }
+    }
+
+
+
+
+        }
+
+        //튜터님 근데 제가 이 부분에서 아쉬운 건 가장 먼저 연산된 연산 결과를 삭제했습니까를 매번 물어보고 그걸 매번 무시해야 해서 불필요한 것 같아요. 몇 번 돌고 난 후에 나오면 좋을 것 같아요..
