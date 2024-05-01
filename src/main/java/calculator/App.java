@@ -1,6 +1,6 @@
 package calculator;
 import java.util.*;
-//<1-7> 맨 밑에 건의?.. 질문?.. 주석 있습니다!!!!!!!
+//<1-8>
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); // 변수 선언
@@ -44,24 +44,27 @@ public class App {
 
                 System.out.println("결과: " + result);
                 System.out.println("가장 먼저 연산된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)"); //remove입력 시 삭제
-                if (Objects.equals(sc.next(), "remove")){
+                if (Objects.equals(sc.nextLine(), "remove")){
                     if(resultList.size()>0){
-                        resultList.remove(0); // 첫번째 결과 삭제
+                        resultList.remove(0);} // 첫번째 결과 삭제
+
+                System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)"); //향상된 for문(foreach)
+                if (Objects.equals(sc.nextLine(), "inquiry")){
+                    for (Integer resultItem : resultList){
+                        System.out.println(resultItem);
+                    }
+
+                    }
+
+                }
             }
-        } // while문 끝
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             exitMessage = sc.nextLine();
+        } // while문 끝
+
 
 
 
 
     }
         }
-    }
-
-
-
-
-        }
-
-        //튜터님 근데 제가 이 부분에서 아쉬운 건 가장 먼저 연산된 연산 결과를 삭제했습니까를 매번 물어보고 그걸 매번 무시해야 해서 불필요한 것 같아요. 몇 번 돌고 난 후에 나오면 좋을 것 같아요..
